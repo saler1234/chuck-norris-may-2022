@@ -2,11 +2,11 @@
     <div class="home">
         <button @click="getJoke()" class="get-more">Get more</button>
         <div class="joke-list">
-            <p class="jokes">{{ startingJoke }}</p>
             <p v-if="error">{{ error }}</p>
             <div class="jokes" v-for="joke in jokes" :key="joke.id">
                 <p>{{ joke }}</p>
             </div>
+            <p class="jokes">{{ startingJoke }}</p>
         </div>
     </div>
 </template>
@@ -35,13 +35,13 @@ export default {
             })
             .catch((error) => {
                 console.log(error)
-                this.errorMsg = 'Error retrieving data'
+                this.error = 'Error retrieving data'
             })
         },
         getJoke() {
             axios.get('https://api.chucknorris.io/jokes/random')
             .then((response) => {
-                this.jokes.push(response.data.value)
+                this.jokes.unshift(response.data.value)
             })
             .catch((error) => {
                 console.log(error)

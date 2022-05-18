@@ -112,7 +112,7 @@ export default {
                 text-align: center;
                 font-size: 16px;
                 padding: 16px;
-                max-width: 300px;
+                max-width: 400px;
             }
         }
     }
